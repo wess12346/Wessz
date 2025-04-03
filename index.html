@@ -3,55 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Feature</title>
-    <style>
-        body { font-family: Arial, sans-serif; margin: 20px; }
-        textarea { width: 300px; height: 100px; }
-        button { padding: 10px 20px; background-color: #4CAF50; color: white; border: none; cursor: pointer; }
-        button:hover { background-color: #45a049; }
-        #response { margin-top: 20px; }
-    </style>
+    <title>AI Chat with Hugging Face</title>
 </head>
 <body>
-    <h1>AI Chat</h1>
+    <h1>Ask the AI a Question</h1>
     <textarea id="userInput" placeholder="Ask a question..."></textarea><br><br>
     <button onclick="askAI()">Ask AI</button>
     <p id="response"></p>
 
-    <script>
-        const users = new Map();
-
-        function useAI(userId) {
-            if (!users.has(userId)) {
-                users.set(userId, { usageCount: 0, isPremium: false });
-            }
-
-            const user = users.get(userId);
-
-            if (user.isPremium) {
-                return "This is an AI response for premium users.";
-            }
-
-            if (user.usageCount < 6) {
-                user.usageCount++;
-                return `You have ${6 - user.usageCount} free uses left. Ask your question!`;
-            }
-
-            return "Free limit reached. Please upgrade to premium.";
-        }
-
-        function askAI() {
-            const userId = "guest"; // You can replace this with a user login system
-            const question = document.getElementById("userInput").value.trim();
-            let responseText = useAI(userId);
-
-            // Simple logic to provide AI-like responses
-            if (question) {
-                responseText = `You asked: "${question}". Here's an AI-like response: "I don't know the answer, but I'm still learning!"`;
-            }
-
-            document.getElementById("response").innerText = responseText;
-        }
-    </script>
-</body>yes</body>
+    <script src="script.js"></script>
+</body>
 </html>
