@@ -11,8 +11,8 @@ async function askAI() {
 }
 
 async function getAIResponse(question) {
-    const apiKey = "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";  // Hugging Face API Key
-    const url = "https://api-inference.huggingface.co/models/gpt2";  // Model URL
+    const apiKey = "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";  // Your Hugging Face API key
+    const url = "https://api-inference.huggingface.co/models/gpt2";  // GPT-2 model URL
 
     try {
         const response = await fetch(url, {
@@ -36,4 +36,3 @@ async function getAIResponse(question) {
         return null;
     }
 }
-
