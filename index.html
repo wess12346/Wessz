@@ -4,11 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AI Feature</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        textarea { width: 300px; height: 100px; }
+        button { padding: 10px 20px; background-color: #4CAF50; color: white; border: none; cursor: pointer; }
+        button:hover { background-color: #45a049; }
+        #response { margin-top: 20px; }
+    </style>
 </head>
 <body>
     <h1>AI Chat</h1>
-    <textarea id="userInput" placeholder="Ask something..."></textarea>
-    <button onclick="askAI()">Submit</button>
+    <textarea id="userInput" placeholder="Ask a question..."></textarea><br><br>
+    <button onclick="askAI()">Ask AI</button>
     <p id="response"></p>
 
     <script>
@@ -22,12 +29,12 @@
             const user = users.get(userId);
 
             if (user.isPremium) {
-                return "AI response for premium user";
+                return "This is an AI response for premium users.";
             }
 
             if (user.usageCount < 6) {
                 user.usageCount++;
-                return `AI response. You have ${6 - user.usageCount} free uses left.`;
+                return `You have ${6 - user.usageCount} free uses left. Ask your question!`;
             }
 
             return "Free limit reached. Please upgrade to premium.";
@@ -35,9 +42,16 @@
 
         function askAI() {
             const userId = "guest"; // You can replace this with a user login system
-            const response = useAI(userId);
-            document.getElementById("response").innerText = response;
+            const question = document.getElementById("userInput").value.trim();
+            let responseText = useAI(userId);
+
+            // Simple logic to provide AI-like responses
+            if (question) {
+                responseText = `You asked: "${question}". Here's an AI-like response: "I don't know the answer, but I'm still learning!"`;
+            }
+
+            document.getElementById("response").innerText = responseText;
         }
     </script>
 </body>
-</html>
+        </html>
