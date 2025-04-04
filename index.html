@@ -1,191 +1,166 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wessz - Login & Signup</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-image: url('https://images.unsplash.com/photo-1593642634341-dc9d5c355b9a'); /* Example Background Image */
-            background-size: cover;
-            color: white;
-            text-align: center;
-            margin: 0;
-            padding: 0;
-        }
-
-        .hero {
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            background: rgba(0, 0, 0, 0.5);
-        }
-
-        .hero h1 {
-            font-size: 4rem;
-            margin-bottom: 20px;
-        }
-
-        .container {
-            width: 100%;
-            max-width: 400px;
-            margin: 0 auto;
-            padding: 20px;
-            background: rgba(0, 0, 0, 0.7);
-            border-radius: 8px;
-            margin-top: -50px;
-        }
-
-        .form-group {
-            margin-bottom: 15px;
-        }
-
-        input[type="text"], input[type="password"], input[type="email"] {
-            width: 100%;
-            padding: 10px;
-            border: none;
-            border-radius: 5px;
-            margin: 5px 0;
-        }
-
-        button {
-            width: 100%;
-            padding: 10px;
-            background-color: #4CAF50;
-            border: none;
-            border-radius: 5px;
-            color: white;
-            font-size: 16px;
-        }
-
-        button:hover {
-            background-color: #45a049;
-        }
-
-        .footer {
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-            text-align: center;
-            background-color: rgba(0, 0, 0, 0.7);
-            color: white;
-            padding: 10px;
-        }
-
-        .about-section {
-            padding: 40px;
-            background-color: rgba(0, 0, 0, 0.7);
-            margin-top: 40px;
-            border-radius: 8px;
-        }
-
-        .contact-info {
-            margin-top: 20px;
-        }
-
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Killer Wess - Login</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: url('https://i.ibb.co/mhzvPGh/savanna-grass.jpg') no-repeat center center fixed;
+      background-size: cover;
+      margin: 0;
+      padding: 0;
+    }
+    .login-container {
+      max-width: 400px;
+      margin: 100px auto;
+      background: rgba(0,0,0,0.7);
+      padding: 30px;
+      border-radius: 15px;
+      color: white;
+      text-align: center;
+    }
+    input {
+      width: 90%;
+      padding: 12px;
+      margin: 10px 0;
+      border-radius: 10px;
+      border: none;
+    }
+    button {
+      padding: 12px 25px;
+      background: #2ecc71;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    .hidden {
+      display: none;
+    }
+    .main-container {
+      padding: 20px;
+      max-width: 1000px;
+      margin: 30px auto;
+      background-color: rgba(0, 0, 0, 0.7);
+      color: white;
+      border-radius: 15px;
+    }
+    .bandana-img {
+      display: block;
+      margin: 0 auto 20px auto;
+      max-width: 100%;
+      border-radius: 10px;
+    }
+    .friends {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 30px;
+    }
+    .friend {
+      background: #3498db;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-weight: bold;
+    }
+    .nav-btn {
+      background: #e67e22;
+      padding: 10px 20px;
+      border: none;
+      font-size: 16px;
+      border-radius: 10px;
+      cursor: pointer;
+      margin-bottom: 30px;
+    }
+    .section {
+      margin-bottom: 30px;
+      padding: 20px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+    }
+    .section h3 {
+      margin-top: 0;
+    }
+  </style>
 </head>
 <body>
 
-    <!-- Hero Section -->
-    <div class="hero">
-        <h1>Welcome to Wessz!</h1>
-        <p>Join us to explore more!</p>
-        <button onclick="window.location.href='#loginForm'">Get Started</button>
-    </div>
+  <!-- Login Section -->
+  <div class="login-container" id="loginBox">
+    <h2>Login to Killer Wess</h2>
+    <input type="text" id="username" placeholder="Enter username" />
+    <input type="password" id="password" placeholder="Enter password" />
+    <br>
+    <button onclick="login()">Login</button>
+    <p>Don't have an account? <a href="#">Sign up</a></p>
+  </div>
 
-    <!-- Main Content -->
-    <div class="container">
-        <h2>Login</h2>
-        <form id="loginForm" onsubmit="return validateLoginForm()">
-            <div class="form-group">
-                <input type="text" id="username" name="username" placeholder="Enter Username" required>
-            </div>
-            <div class="form-group">
-                <input type="password" id="password" name="password" placeholder="Enter Password" required>
-            </div>
-            <button type="submit">Login</button>
-            <p><a href="#" onclick="toggleForms()">Don't have an account? Signup</a></p>
-        </form>
+  <!-- Main App Section -->
+  <div id="mainApp" class="hidden">
+    <div class="main-container">
+      <img class="bandana-img" src="https://i.ibb.co/FH9mkqw/robot-bandana.jpg" alt="Robot Bandana" />
+      <h2 style="text-align:center;">Welcome to Killer Wess Dashboard</h2>
 
-        <!-- Signup Form (Initially hidden) -->
-        <div id="signupForm" style="display:none;">
-            <h2>Signup</h2>
-            <form id="signupFormContent" onsubmit="return validateSignupForm()">
-                <div class="form-group">
-                    <input type="email" id="signupEmail" name="email" placeholder="Enter Email" required>
-                </div>
-                <div class="form-group">
-                    <input type="text" id="signupUsername" name="username" placeholder="Create Username" required>
-                </div>
-                <div class="form-group">
-                    <input type="password" id="signupPassword" name="password" placeholder="Create Password" required>
-                </div>
-                <button type="submit">Signup</button>
-                <p><a href="#" onclick="toggleForms()">Already have an account? Login</a></p>
-            </form>
-        </div>
-    </div>
+      <div class="friends">
+        <div class="friend">Lucas</div>
+        <div class="friend">Success</div>
+        <div class="friend">Wonderous</div>
+        <div class="friend">Bless</div>
+        <div class="friend">Prince</div>
+        <div class="friend">Patrick</div>
+      </div>
 
-    <!-- About Section -->
-    <div class="about-section">
-        <h2>About Wessz</h2>
-        <p>Welcome to Wessz, where we explore the latest trends in technology and innovation. Created by <strong>Christian</strong>, also known by the nickname <strong>"CodeMaster"</strong>.</p>
-        <p><strong>Credits:</strong> This site was developed by CodeMaster with the help of various open-source tools and technologies.</p>
-        <p>If you'd like to learn more or get in touch, feel free to contact me below.</p>
-    </div>
+      <button class="nav-btn" onclick="toggleContact()">See My Contacts</button>
 
-    <!-- Contact Info Section -->
-    <div class="contact-info">
-        <h3>Contact Information</h3>
+      <div class="section" id="contact" style="display:none;">
+        <h3>Contact Info</h3>
         <p><strong>Phone:</strong> 0888293496</p>
         <p><strong>Telegram:</strong> +231888293496</p>
+      </div>
+
+      <div class="section">
+        <h3>Credits</h3>
+        <p>Site built by <strong>Christian</strong> (a.k.a Killer Wess), with help from his AI partner <strong>CodeMaster</strong>.</p>
+        <p>CodeMaster is an AI programmer and friend who brings killer designs to life!</p>
+      </div>
+
+      <div class="section">
+        <h3>Suggestion Box</h3>
+        <p>We’d love to hear your ideas! Click below to send a suggestion:</p>
+        <a href="https://forms.gle/E6Y4yjagATfq87y39" target="_blank">
+          <button class="nav-btn">Go to Suggestion Form</button>
+        </a>
+      </div>
     </div>
+  </div>
 
-    <!-- Footer -->
-    <div class="footer">
-        <p>&copy; 2025 Wessz. All rights reserved.</p>
-    </div>
+  <script>
+    function login() {
+      const username = document.getElementById("username").value.trim();
+      const password = document.getElementById("password").value.trim();
 
-    <script>
-        function toggleForms() {
-            const loginForm = document.getElementById('loginForm');
-            const signupForm = document.getElementById('signupForm');
-            if (loginForm.style.display === 'none') {
-                loginForm.style.display = 'block';
-                signupForm.style.display = 'none';
-            } else {
-                loginForm.style.display = 'none';
-                signupForm.style.display = 'block';
-            }
-        }
+      if (username === "" || password === "") {
+        alert("Please fill in both fields.");
+        return;
+      }
 
-        function validateLoginForm() {
-            const username = document.getElementById('username').value;
-            const password = document.getElementById('password').value;
-            if (username === '' || password === '') {
-                alert("Please fill out both fields!");
-                return false;
-            }
-            alert("Login successful!");
-            return true;
-        }
+      // Simulate successful login
+      document.getElementById("loginBox").classList.add("hidden");
+      document.getElementById("mainApp").classList.remove("hidden");
+    }
 
-        function validateSignupForm() {
-            const email = document.getElementById('signupEmail').value;
-            const username = document.getElementById('signupUsername').value;
-            const password = document.getElementById('signupPassword').value;
-            if (email === '' || username === '' || password === '') {
-                alert("Please fill out all fields!");
-                return false;
-            }
-            alert("Signup successful!");
-            return true;
-        }
-    </script>
+    function toggleContact() {
+      const contactDiv = document.getElementById('contact');
+      contactDiv.style.display = contactDiv.style.display === 'none' ? 'block' : 'none';
+    }
+  </script>
 
 </body>
-            </html>
+</html>
