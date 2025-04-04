@@ -7,7 +7,7 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-image: url('path/to/your/image.jpg'); /* Replace with your image path */
+            background-image: url('https://images.unsplash.com/photo-1593642634341-dc9d5c355b9a'); /* Robot image */
             background-size: cover;
             color: white;
             text-align: center;
@@ -63,7 +63,8 @@
     <div class="container">
         <h2>Login</h2>
 
-        <form id="loginForm">
+        <!-- Login Form -->
+        <form id="loginForm" onsubmit="return validateLoginForm()">
             <div class="form-group">
                 <input type="text" id="username" name="username" placeholder="Enter Username" required>
             </div>
@@ -74,9 +75,10 @@
             <p><a href="#" onclick="toggleForms()">Don't have an account? Signup</a></p>
         </form>
 
+        <!-- Signup Form (Initially hidden) -->
         <div id="signupForm" style="display:none;">
             <h2>Signup</h2>
-            <form id="signupFormContent">
+            <form id="signupFormContent" onsubmit="return validateSignupForm()">
                 <div class="form-group">
                     <input type="email" id="signupEmail" name="email" placeholder="Enter Email" required>
                 </div>
@@ -95,7 +97,7 @@
     </div>
 
     <script>
-        // Toggle between login and signup forms
+        // Function to toggle between login and signup forms
         function toggleForms() {
             const loginForm = document.getElementById('loginForm');
             const signupForm = document.getElementById('signupForm');
@@ -108,41 +110,43 @@
             }
         }
 
-        // Login form validation and submission
-        document.getElementById('loginForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-
+        // Validate Login Form
+        function validateLoginForm() {
             const username = document.getElementById('username').value;
             const password = document.getElementById('password').value;
             const message = document.getElementById('message');
 
-            if (username && password) {
-                message.textContent = "Login successful!";  // You can add your login logic here
-                message.style.color = "#32CD32"; // Green for success
-            } else {
-                message.textContent = "Please fill out all fields!";
+            // Check if both fields are filled
+            if (username === '' || password === '') {
+                message.textContent = "Please fill out both fields!";
                 message.style.color = "#ff6347"; // Red for error
+                return false; // Prevent form submission
             }
-        });
 
-        // Signup form validation and submission
-        document.getElementById('signupFormContent').addEventListener('submit', function(e) {
-            e.preventDefault();
+            message.textContent = "Login successful!";  // You can replace this with your login logic
+            message.style.color = "#32CD32"; // Green for success
+            return true;  // Allow form submission
+        }
 
+        // Validate Signup Form
+        function validateSignupForm() {
             const email = document.getElementById('signupEmail').value;
             const username = document.getElementById('signupUsername').value;
             const password = document.getElementById('signupPassword').value;
             const message = document.getElementById('message');
 
-            if (email && username && password) {
-                message.textContent = "Signup successful!";  // You can add your signup logic here
-                message.style.color = "#32CD32"; // Green for success
-            } else {
+            // Check if all fields are filled
+            if (email === '' || username === '' || password === '') {
                 message.textContent = "Please fill out all fields!";
                 message.style.color = "#ff6347"; // Red for error
+                return false; // Prevent form submission
             }
-        });
+
+            message.textContent = "Signup successful!";  // You can replace this with your signup logic
+            message.style.color = "#32CD32"; // Green for success
+            return true;  // Allow form submission
+        }
     </script>
 
 </body>
-</html>
+    </html>
